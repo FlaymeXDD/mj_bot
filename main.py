@@ -119,60 +119,60 @@ async def masterlist_majestic_embed():
                         return
             await channel.send(embed=embed)  # Отправка нового эмбеда, если его нет
 
-# async def masterlist_5rp_embed():
-    servers = url_5rp_pars()
+# # async def masterlist_5rp_embed():
+#     servers = url_5rp_pars()
 
-    if servers:
-        total_players = 0
+#     if servers:
+#         total_players = 0
 
-        for server in servers:
-            players = server.get('players')
-            total_players += players
+#         for server in servers:
+#             players = server.get('players')
+#             total_players += players
 
-        embed = discord.Embed(
-            title = f"Общий онлайн: {total_players:,.0f}".replace(",", " "),
-            color=int("FF7A2F", 16),
-        )
+#         embed = discord.Embed(
+#             title = f"Общий онлайн: {total_players:,.0f}".replace(",", " "),
+#             color=int("FF7A2F", 16),
+#         )
 
-        for server in servers:
-            name = server.get('name')
-            players = server.get('players')
-            max_players = server.get('max_players')
-            status = server.get('status')
-            emoji = server.get('emoji')
+#         for server in servers:
+#             name = server.get('name')
+#             players = server.get('players')
+#             max_players = server.get('max_players')
+#             status = server.get('status')
+#             emoji = server.get('emoji')
 
-            if status:
-                status_info = "<:Checkmark:1325243634588586045>"
-            else:
-                status_info = "<:trialmoderator:1325243800234233897>"
+#             if status:
+#                 status_info = "<:Checkmark:1325243634588586045>"
+#             else:
+#                 status_info = "<:trialmoderator:1325243800234233897>"
 
-            embed.set_author(
-                    name="GTA 5 RP Masterlist",
-                    icon_url = "" 
-            )
+#             embed.set_author(
+#                     name="GTA 5 RP Masterlist",
+#                     icon_url = "" 
+#             )
             
-            embed.add_field(
-                name=f"**{name}**  {emoji}\n**Статус сервера:** {status_info}\tㅤ",
-                value=f"**Онлайн:** `{players}/{max_players}`\nㅤ",
-                inline=True
-            )
+#             embed.add_field(
+#                 name=f"**{name}**  {emoji}\n**Статус сервера:** {status_info}\tㅤ",
+#                 value=f"**Онлайн:** `{players}/{max_players}`\nㅤ",
+#                 inline=True
+#             )
 
-            time = datetime.now().strftime("%d %B  %H:%M")
-            embed.set_footer(
-                text=f"Информация обновлена  •  {time}"
-            )
+#             time = datetime.now().strftime("%d %B  %H:%M")
+#             embed.set_footer(
+#                 text=f"Информация обновлена  •  {time}"
+#             )
 
-        channel = bot.get_channel(channelid)
-        if channel:
-            async for message in channel.history(limit=1):
-                if message.author == bot.user and message.embeds:  # Проверка на наличие эмбеда
-                    try:
-                        await message.edit(embed=embed)  # Обновление существующего эмбеда
-                        return 
-                    except discord.errors.Forbidden:
-                        await channel.send(embed=embed)  # Если нельзя редактировать, отправляем новый
-                        return
-            await channel.send(embed=embed)  # Отправка нового эмбеда, если его нет
+#         channel = bot.get_channel(channelid)
+#         if channel:
+#             async for message in channel.history(limit=1):
+#                 if message.author == bot.user and message.embeds:  # Проверка на наличие эмбеда
+#                     try:
+#                         await message.edit(embed=embed)  # Обновление существующего эмбеда
+#                         return 
+#                     except discord.errors.Forbidden:
+#                         await channel.send(embed=embed)  # Если нельзя редактировать, отправляем новый
+#                         return
+#             await channel.send(embed=embed)  # Отправка нового эмбеда, если его нет
 
 @bot.event
 async def on_ready():
